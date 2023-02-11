@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Project.Models.Chat>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IntRemitente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntReceptor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TxtMensaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DtFecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntEstado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IntIdChatDetalle)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntRemitente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntReceptor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TxtMensaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtFecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntEstado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntIdChatDetalle)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IntIdChat">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IntIdChat">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IntIdChat">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
