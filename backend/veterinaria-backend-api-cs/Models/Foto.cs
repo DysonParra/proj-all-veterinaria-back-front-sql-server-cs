@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Foto} se encarga de realizar tareas específicas.
+ * @fileoverview    {Foto}
  *
  * @version         2.0
  *
