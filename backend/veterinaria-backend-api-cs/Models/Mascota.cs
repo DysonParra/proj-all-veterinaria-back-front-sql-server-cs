@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code Mascota}.
+ * TODO: Description of {@code Mascota}.
  *
  * @author Dyson Parra
  */

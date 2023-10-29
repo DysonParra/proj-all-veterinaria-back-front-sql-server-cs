@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code Persona}.
+ * TODO: Description of {@code Persona}.
  *
  * @author Dyson Parra
  */

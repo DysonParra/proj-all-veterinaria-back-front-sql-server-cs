@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 /**
- * TODO: Definición de {@code Chat}.
+ * TODO: Description of {@code Chat}.
  *
  * @author Dyson Parra
  */
