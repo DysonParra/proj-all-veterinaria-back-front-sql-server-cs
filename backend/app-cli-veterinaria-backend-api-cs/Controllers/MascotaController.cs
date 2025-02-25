@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Veterinaria.Data;
 
-namespace Veterinaria
-{
-    public class MascotaController : Controller
-    {
+namespace Veterinaria {
+
+    /**
+     * TODO: Description of {@code MascotaController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class MascotaController : Controller {
         private readonly VeterinariaContext _context;
 
-        public MascotaController(VeterinariaContext context)
-        {
+        public MascotaController(VeterinariaContext context) {
             _context = context;
         }
 
         // GET: Mascota
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
               return View(await _context.Mascota.ToListAsync());
         }
 
         // GET: Mascota/Details/5
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null || _context.Mascota == null)
-            {
+        public async Task<IActionResult> Details(long? id) {
+            if (id == null || _context.Mascota == null) {
                 return NotFound();
             }
 
             var mascota = await _context.Mascota
                 .FirstOrDefaultAsync(m => m.IntIdMascota == id);
-            if (mascota == null)
-            {
+            if (mascota == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Veterinaria
         }
 
         // GET: Mascota/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Veterinaria
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IntIdMascota,StrNombre,StrEdad,StrUbicacion,StrRaza,StrTipo,IntIdPersona")] Mascota mascota)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IntIdMascota,StrNombre,StrEdad,StrUbicacion,StrRaza,StrTipo,IntIdPersona")] Mascota mascota) {
+            if (ModelState.IsValid) {
                 _context.Add(mascota);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Veterinaria
         }
 
         // GET: Mascota/Edit/5
-        public async Task<IActionResult> Edit(long? id)
-        {
-            if (id == null || _context.Mascota == null)
-            {
+        public async Task<IActionResult> Edit(long? id) {
+            if (id == null || _context.Mascota == null) {
                 return NotFound();
             }
 
             var mascota = await _context.Mascota.FindAsync(id);
-            if (mascota == null)
-            {
+            if (mascota == null) {
                 return NotFound();
             }
             return View(mascota);
@@ -100,28 +94,21 @@ namespace Veterinaria
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IntIdMascota,StrNombre,StrEdad,StrUbicacion,StrRaza,StrTipo,IntIdPersona")] Mascota mascota)
-        {
-            if (id != mascota.IntIdMascota)
-            {
+        public async Task<IActionResult> Edit(long? id, [Bind("IntIdMascota,StrNombre,StrEdad,StrUbicacion,StrRaza,StrTipo,IntIdPersona")] Mascota mascota) {
+            if (id != mascota.IntIdMascota) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(mascota);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MascotaExists(mascota.IntIdMascota))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!MascotaExists(mascota.IntIdMascota)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Veterinaria
         }
 
         // GET: Mascota/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null || _context.Mascota == null)
-            {
+        public async Task<IActionResult> Delete(long? id) {
+            if (id == null || _context.Mascota == null) {
                 return NotFound();
             }
 
             var mascota = await _context.Mascota
                 .FirstOrDefaultAsync(m => m.IntIdMascota == id);
-            if (mascota == null)
-            {
+            if (mascota == null) {
                 return NotFound();
             }
 
@@ -151,24 +135,20 @@ namespace Veterinaria
         // POST: Mascota/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long? id)
-        {
-            if (_context.Mascota == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(long? id) {
+            if (_context.Mascota == null) {
                 return Problem("Entity set 'VeterinariaContext.Mascota'  is null.");
             }
             var mascota = await _context.Mascota.FindAsync(id);
-            if (mascota != null)
-            {
+            if (mascota != null) {
                 _context.Mascota.Remove(mascota);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MascotaExists(long? id)
-        {
+        private bool MascotaExists(long? id) {
           return _context.Mascota.Any(e => e.IntIdMascota == id);
         }
     }

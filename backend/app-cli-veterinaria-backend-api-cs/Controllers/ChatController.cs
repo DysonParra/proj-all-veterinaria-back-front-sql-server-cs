@@ -22,35 +22,35 @@ using Microsoft.EntityFrameworkCore;
 using Project.Models;
 using Veterinaria.Data;
 
-namespace Veterinaria
-{
-    public class ChatController : Controller
-    {
+namespace Veterinaria {
+
+    /**
+     * TODO: Description of {@code ChatController}.
+     *
+     * @author Dyson Parra
+     * @since .NET 8 (LTS), C# 12
+     */
+    public class ChatController : Controller {
         private readonly VeterinariaContext _context;
 
-        public ChatController(VeterinariaContext context)
-        {
+        public ChatController(VeterinariaContext context) {
             _context = context;
         }
 
         // GET: Chat
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index() {
               return View(await _context.Chat.ToListAsync());
         }
 
         // GET: Chat/Details/5
-        public async Task<IActionResult> Details(long? id)
-        {
-            if (id == null || _context.Chat == null)
-            {
+        public async Task<IActionResult> Details(long? id) {
+            if (id == null || _context.Chat == null) {
                 return NotFound();
             }
 
             var chat = await _context.Chat
                 .FirstOrDefaultAsync(m => m.IntIdChat == id);
-            if (chat == null)
-            {
+            if (chat == null) {
                 return NotFound();
             }
 
@@ -58,8 +58,7 @@ namespace Veterinaria
         }
 
         // GET: Chat/Create
-        public IActionResult Create()
-        {
+        public IActionResult Create() {
             return View();
         }
 
@@ -68,10 +67,8 @@ namespace Veterinaria
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IntIdChat,IntRemitente,IntReceptor,TxtMensaje,DtFecha,IntEstado,IntIdChatDetalle")] Chat chat)
-        {
-            if (ModelState.IsValid)
-            {
+        public async Task<IActionResult> Create([Bind("IntIdChat,IntRemitente,IntReceptor,TxtMensaje,DtFecha,IntEstado,IntIdChatDetalle")] Chat chat) {
+            if (ModelState.IsValid) {
                 _context.Add(chat);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,16 +77,13 @@ namespace Veterinaria
         }
 
         // GET: Chat/Edit/5
-        public async Task<IActionResult> Edit(long? id)
-        {
-            if (id == null || _context.Chat == null)
-            {
+        public async Task<IActionResult> Edit(long? id) {
+            if (id == null || _context.Chat == null) {
                 return NotFound();
             }
 
             var chat = await _context.Chat.FindAsync(id);
-            if (chat == null)
-            {
+            if (chat == null) {
                 return NotFound();
             }
             return View(chat);
@@ -100,28 +94,21 @@ namespace Veterinaria
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long? id, [Bind("IntIdChat,IntRemitente,IntReceptor,TxtMensaje,DtFecha,IntEstado,IntIdChatDetalle")] Chat chat)
-        {
-            if (id != chat.IntIdChat)
-            {
+        public async Task<IActionResult> Edit(long? id, [Bind("IntIdChat,IntRemitente,IntReceptor,TxtMensaje,DtFecha,IntEstado,IntIdChatDetalle")] Chat chat) {
+            if (id != chat.IntIdChat) {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
+            if (ModelState.IsValid) {
+                try {
                     _context.Update(chat);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ChatExists(chat.IntIdChat))
-                    {
+                catch (DbUpdateConcurrencyException) {
+                    if (!ChatExists(chat.IntIdChat)) {
                         return NotFound();
                     }
-                    else
-                    {
+                    else {
                         throw;
                     }
                 }
@@ -131,17 +118,14 @@ namespace Veterinaria
         }
 
         // GET: Chat/Delete/5
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null || _context.Chat == null)
-            {
+        public async Task<IActionResult> Delete(long? id) {
+            if (id == null || _context.Chat == null) {
                 return NotFound();
             }
 
             var chat = await _context.Chat
                 .FirstOrDefaultAsync(m => m.IntIdChat == id);
-            if (chat == null)
-            {
+            if (chat == null) {
                 return NotFound();
             }
 
@@ -151,24 +135,20 @@ namespace Veterinaria
         // POST: Chat/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long? id)
-        {
-            if (_context.Chat == null)
-            {
+        public async Task<IActionResult> DeleteConfirmed(long? id) {
+            if (_context.Chat == null) {
                 return Problem("Entity set 'VeterinariaContext.Chat'  is null.");
             }
             var chat = await _context.Chat.FindAsync(id);
-            if (chat != null)
-            {
+            if (chat != null) {
                 _context.Chat.Remove(chat);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ChatExists(long? id)
-        {
+        private bool ChatExists(long? id) {
           return _context.Chat.Any(e => e.IntIdChat == id);
         }
     }
