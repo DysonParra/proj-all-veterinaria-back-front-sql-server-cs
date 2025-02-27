@@ -33,16 +33,26 @@ namespace Veterinaria {
     public class ChatDetalleController : Controller {
         private readonly VeterinariaContext _context;
 
+        /**
+         * TODO: Description of method {@code ChatDetalleController}.
+         *
+         */
         public ChatDetalleController(VeterinariaContext context) {
             _context = context;
         }
 
-        // GET: ChatDetalle
+        /**
+         * GET: ChatDetalle
+         *
+         */
         public async Task<IActionResult> Index() {
               return View(await _context.ChatDetalle.ToListAsync());
         }
 
-        // GET: ChatDetalle/Details/5
+        /**
+         * GET: ChatDetalle/Details/5
+         *
+         */
         public async Task<IActionResult> Details(long? id) {
             if (id == null || _context.ChatDetalle == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Veterinaria {
             return View(chatDetalle);
         }
 
-        // GET: ChatDetalle/Create
+        /**
+         * GET: ChatDetalle/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: ChatDetalle/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: ChatDetalle/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntIdChatDetalle,DtUltima,EnmEscribiendo,IntIdPersona")] ChatDetalle chatDetalle) {
@@ -76,7 +92,10 @@ namespace Veterinaria {
             return View(chatDetalle);
         }
 
-        // GET: ChatDetalle/Edit/5
+        /**
+         * GET: ChatDetalle/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(long? id) {
             if (id == null || _context.ChatDetalle == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Veterinaria {
             return View(chatDetalle);
         }
 
-        // POST: ChatDetalle/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: ChatDetalle/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long? id, [Bind("IntIdChatDetalle,DtUltima,EnmEscribiendo,IntIdPersona")] ChatDetalle chatDetalle) {
@@ -117,7 +139,10 @@ namespace Veterinaria {
             return View(chatDetalle);
         }
 
-        // GET: ChatDetalle/Delete/5
+        /**
+         * GET: ChatDetalle/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(long? id) {
             if (id == null || _context.ChatDetalle == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Veterinaria {
             return View(chatDetalle);
         }
 
-        // POST: ChatDetalle/Delete/5
+        /**
+         * POST: ChatDetalle/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) {
@@ -148,6 +176,10 @@ namespace Veterinaria {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code ChatDetalleExists}.
+         *
+         */
         private bool ChatDetalleExists(long? id) {
           return _context.ChatDetalle.Any(e => e.IntIdChatDetalle == id);
         }

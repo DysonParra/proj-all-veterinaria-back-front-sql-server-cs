@@ -33,16 +33,26 @@ namespace Veterinaria {
     public class FotoController : Controller {
         private readonly VeterinariaContext _context;
 
+        /**
+         * TODO: Description of method {@code FotoController}.
+         *
+         */
         public FotoController(VeterinariaContext context) {
             _context = context;
         }
 
-        // GET: Foto
+        /**
+         * GET: Foto
+         *
+         */
         public async Task<IActionResult> Index() {
               return View(await _context.Foto.ToListAsync());
         }
 
-        // GET: Foto/Details/5
+        /**
+         * GET: Foto/Details/5
+         *
+         */
         public async Task<IActionResult> Details(long? id) {
             if (id == null || _context.Foto == null) {
                 return NotFound();
@@ -57,14 +67,20 @@ namespace Veterinaria {
             return View(foto);
         }
 
-        // GET: Foto/Create
+        /**
+         * GET: Foto/Create
+         *
+         */
         public IActionResult Create() {
             return View();
         }
 
-        // POST: Foto/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Foto/Create
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IntIdFoto,StrImagen,IntIdMascota")] Foto foto) {
@@ -76,7 +92,10 @@ namespace Veterinaria {
             return View(foto);
         }
 
-        // GET: Foto/Edit/5
+        /**
+         * GET: Foto/Edit/5
+         *
+         */
         public async Task<IActionResult> Edit(long? id) {
             if (id == null || _context.Foto == null) {
                 return NotFound();
@@ -89,9 +108,12 @@ namespace Veterinaria {
             return View(foto);
         }
 
-        // POST: Foto/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /**
+         * POST: Foto/Edit/5
+         * To protect from overposting attacks, enable the specific properties you want to bind to.
+         * For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+         *
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(long? id, [Bind("IntIdFoto,StrImagen,IntIdMascota")] Foto foto) {
@@ -117,7 +139,10 @@ namespace Veterinaria {
             return View(foto);
         }
 
-        // GET: Foto/Delete/5
+        /**
+         * GET: Foto/Delete/5
+         *
+         */
         public async Task<IActionResult> Delete(long? id) {
             if (id == null || _context.Foto == null) {
                 return NotFound();
@@ -132,7 +157,10 @@ namespace Veterinaria {
             return View(foto);
         }
 
-        // POST: Foto/Delete/5
+        /**
+         * POST: Foto/Delete/5
+         *
+         */
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long? id) {
@@ -148,6 +176,10 @@ namespace Veterinaria {
             return RedirectToAction(nameof(Index));
         }
 
+        /**
+         * TODO: Description of method {@code FotoExists}.
+         *
+         */
         private bool FotoExists(long? id) {
           return _context.Foto.Any(e => e.IntIdFoto == id);
         }
