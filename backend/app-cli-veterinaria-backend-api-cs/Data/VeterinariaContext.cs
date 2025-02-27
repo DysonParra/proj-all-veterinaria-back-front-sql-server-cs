@@ -28,7 +28,12 @@ namespace Veterinaria.Data {
      * @since .NET 8 (LTS), C# 12
      */
     public class VeterinariaContext : DbContext {
-        public VeterinariaContext (DbContextOptions<VeterinariaContext> options)
+
+        /**
+         * TODO: Description of method {@code VeterinariaContext}.
+         *
+         */
+        public VeterinariaContext(DbContextOptions<VeterinariaContext> options)
             : base(options) {
         }
 
