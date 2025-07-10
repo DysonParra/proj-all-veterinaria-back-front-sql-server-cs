@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {MascotaController}
+ * @overview        {MascotaController}
  *
  * @version         2.0
  *

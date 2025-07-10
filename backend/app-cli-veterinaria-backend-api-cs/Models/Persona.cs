@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {Persona}
+ * @overview        {Persona}
  *
  * @version         2.0
  *

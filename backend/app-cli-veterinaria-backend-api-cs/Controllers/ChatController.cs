@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {ChatController}
+ * @overview        {ChatController}
  *
  * @version         2.0
  *

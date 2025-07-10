@@ -1,5 +1,5 @@
 /*
- * @fileoverview    {ChatDetalle}
+ * @overview        {ChatDetalle}
  *
  * @version         2.0
  *

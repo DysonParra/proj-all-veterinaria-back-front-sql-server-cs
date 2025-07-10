@@ -1,5 +1,5 @@
 ﻿/*
- * @fileoverview    {PersonaController}
+ * @overview        {PersonaController}
  *
  * @version         2.0
  *
